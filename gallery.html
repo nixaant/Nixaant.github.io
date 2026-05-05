@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery — HIRO</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Serif+JP:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo">HIRO</a>
+  <ul class="nav-links">
+    <li><a href="gallery.html" style="color:var(--text)">Gallery</a></li>
+    <li><a href="characters.html">Characters</a></li>
+    <li><a href="panels.html">Panels</a></li>
+    <li><a href="process.html">Process</a></li>
+    <li><a href="commissions.html">Commissions</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <a href="commissions.html" class="nav-cta">Hire Me</a>
+  <button class="nav-burger" id="burger"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="gallery.html">Gallery</a>
+  <a href="characters.html">Characters</a>
+  <a href="panels.html">Panels</a>
+  <a href="process.html">Process</a>
+  <a href="commissions.html">Commissions</a>
+  <a href="about.html">About</a>
+  <a href="commissions.html" class="mobile-cta">Hire Me →</a>
+</div>
+
+<div class="page-hero">
+  <span class="section-tag">All Works</span>
+  <h1>Gallery</h1>
+  <p>Every piece, all in one place. Add your images to the <code>img/gallery/</code> folder.</p>
+</div>
+
+<div class="filter-bar">
+  <button class="filter-btn active" data-filter="all">All</button>
+  <button class="filter-btn" data-filter="character">Character Design</button>
+  <button class="filter-btn" data-filter="panel">Manga Panels</button>
+  <button class="filter-btn" data-filter="illustration">Illustration</button>
+  <button class="filter-btn" data-filter="fanart">Fan Art</button>
+</div>
+
+<div class="gallery-grid" id="galleryGrid">
+  <!-- Empty state — replace with real gallery items as you add art -->
+  <div class="empty-state">
+    <div class="empty-icon">🎨</div>
+    <h3>Art Coming Soon</h3>
+    <p>Hiro is creating new pieces daily. Check back soon — or follow on Twitter for updates.</p>
+    <a href="https://twitter.com/nixaant" target="_blank" class="btn-primary">Follow @nixaant</a>
+  </div>
+
+  <!--
+  === HOW TO ADD YOUR ART ===
+  Copy this block and fill in your image path, title, and category.
+  Category options: character | panel | illustration | fanart
+
+  <div class="gallery-item" data-category="character">
+    <img src="img/gallery/your-image.jpg" alt="Title of artwork" loading="lazy">
+    <div class="gallery-overlay">
+      <div>
+        <div class="gallery-label">Title of Artwork</div>
+        <div class="gallery-sublabel">Character Design</div>
+      </div>
+    </div>
+  </div>
+  -->
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-left">
+      <div class="footer-logo">HIRO</div>
+      <div class="footer-sub">Manga Artist · @nixaant</div>
+    </div>
+    <div class="footer-links">
+      <a href="gallery.html">Gallery</a>
+      <a href="commissions.html">Commissions</a>
+      <a href="about.html">About</a>
+      <a href="https://twitter.com/nixaant" target="_blank">Twitter ↗</a>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 Hiro. All rights reserved.</div>
+</footer>
+
+<script src="main.js"></script>
+<script>
+  // Filter logic
+  const btns = document.querySelectorAll('.filter-btn');
+  const items = document.querySelectorAll('.gallery-item');
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      items.forEach(item => {
+        item.style.display = (f === 'all' || item.dataset.category === f) ? 'block' : 'none';
+      });
+    });
+  });
+</script>
+</body>
+</html>
